@@ -47,9 +47,11 @@ function Validation(){
     };
 
     this.passwordCheck = function(value,spanID){
-        var lengthVal = /^([a-zA-Z0-9-@$!%*?&]{6,10})$/;
+        var lengthVal = /^([a-zA-Z0-9\d@$!%*?&]{6,10})$/;
         var UpcaseLeter = /(?=.*?[A-Z])/;
+        var numberLeter = /(?=.\d)/;
         var specialLeter = /(?=.*[@$!%*?&])/;
+        var numberNote = (numberLeter.test(value))? '':'Ít nhất một ký tự số. '
         if(lengthVal.test(value)){
             var lengthNote = '';
         }
@@ -63,7 +65,7 @@ function Validation(){
             upcaseNote = 'Ít nhất một chữ in hoa. ';
         }
         var specialNote = (specialLeter.test(value))? '':'Ít nhất một ký tự đặc biệt.';
-        getEle(spanID).innerHTML = lengthNote + upcaseNote + specialNote;
+        getEle(spanID).innerHTML = lengthNote + numberNote + upcaseNote + specialNote;
         if(lengthNote == '' && upcaseNote == '' && specialNote == ''){
             return true;
         }
