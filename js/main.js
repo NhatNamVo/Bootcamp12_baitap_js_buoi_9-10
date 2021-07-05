@@ -101,8 +101,6 @@ getEle('btnThemNV').addEventListener('click',function(){
 
 
     var newstaff = new Staff(account,name,email,password,date,salary,position,worktime);
-    newstaff.staffTotalSalary();
-    newstaff.staffValue();
     stafflist.addStaff(newstaff);
     Staffrender(stafflist.staffArr);
     setLocalStorage();
